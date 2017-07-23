@@ -21,7 +21,7 @@
             android:name=".ItemActivity"
             android:theme="@style/ItemActivityTheme">
         </activity>
-        <activity android:name=".DaoshuActivity">
+        <activity android:name=".ChapterListActivity">
 
         </activity>
 

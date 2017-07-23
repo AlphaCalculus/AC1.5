@@ -11,18 +11,18 @@ import android.widget.TextView;
 import java.util.List;
 
 
-public class DaoshuAdapter extends ArrayAdapter<Daoshu>{
+public class ChapterListAdapter extends ArrayAdapter<Chapter> {
 
     private int resourceId;
 
-    public DaoshuAdapter(Context context, int textViewResourceId, List<Daoshu> objects) {
+    public ChapterListAdapter(Context context, int textViewResourceId, List<Chapter> objects) {
         super(context, textViewResourceId, objects);
         resourceId = textViewResourceId;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Daoshu daoshu = getItem(position);
+        Chapter daoshu = getItem(position);
         View view;
         ViewHolder viewHolder;
         if (convertView == null) {
@@ -35,8 +35,8 @@ public class DaoshuAdapter extends ArrayAdapter<Daoshu>{
             view = convertView;
             viewHolder = (ViewHolder) view.getTag(); // 重新获取ViewHolder
         }
-        viewHolder.daoshuImage.setImageResource(daoshu.getDaoshuimageId());
-        viewHolder.daoshuName.setText(daoshu.getDaoshuname());
+        viewHolder.daoshuImage.setImageResource(daoshu.getChapterImageId());
+        viewHolder.daoshuName.setText(daoshu.getChapterName());
         return view;
     }
 
