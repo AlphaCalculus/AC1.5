@@ -20,7 +20,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
     private Context mContext;
 
-    private List<Home_Item> mHomeItemList;
+    private List<ChapterItem> mHomeItemList;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
@@ -35,7 +35,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         }
     }
 
-    public ItemAdapter(List<Home_Item> homeItemList) {
+    public ItemAdapter(List<ChapterItem> homeItemList) {
         mHomeItemList = homeItemList;
     }
 
@@ -50,7 +50,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
-                Home_Item homeItem = mHomeItemList.get(position);
+                ChapterItem homeItem = mHomeItemList.get(position);
                 Intent intent = new Intent(mContext, ItemActivity.class);
                 intent.putExtra(ItemActivity.ITEM_NAME, homeItem.getName());
                 intent.putExtra(ItemActivity.ITEM_IMAGE_ID, homeItem.getImageId());
@@ -62,7 +62,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Home_Item homeItem = mHomeItemList.get(position);
+        ChapterItem homeItem = mHomeItemList.get(position);
         holder.itemName.setText(homeItem.getName());
         Glide.with(mContext).load(homeItem.getImageId()).into(holder.itemImage);
     }

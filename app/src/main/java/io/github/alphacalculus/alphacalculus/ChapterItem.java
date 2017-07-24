@@ -1,12 +1,12 @@
 package io.github.alphacalculus.alphacalculus;
 
-public class Home_Item {
+public class ChapterItem {
 
     private String name;
 
     private int imageId;
 
-    public Home_Item(String name, int imageId) {
+    public ChapterItem(String name, int imageId) {
         this.name = name;
         this.imageId = imageId;
     }

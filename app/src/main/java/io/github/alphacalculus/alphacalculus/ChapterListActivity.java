@@ -1,13 +1,13 @@
 package io.github.alphacalculus.alphacalculus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -23,7 +23,7 @@ import javax.xml.xpath.XPathFactory;
 
 public class ChapterListActivity extends AppCompatActivity {
 
-    private List<Chapter> chapterList = new ArrayList<Chapter>();
+    private List<ChapterItem> chapterList = new ArrayList<ChapterItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +43,19 @@ public class ChapterListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Chapter chapter = chapterList.get(position);
-                Toast.makeText(ChapterListActivity.this, chapter.getChapterName(), Toast.LENGTH_SHORT).show();
+                ChapterItem chapter = chapterList.get(position);
+//                Toast.makeText(ChapterListActivity.this, chapter.getName(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(ChapterListActivity.this, ItemActivity.class);
+                intent.putExtra(ItemActivity.ITEM_NAME, chapter.getName());
+                intent.putExtra(ItemActivity.ITEM_IMAGE_ID, chapter.getImageId());
+                startActivity(intent);
             }
         });
     }
 
     private void initChapters(int part_index) {
-        Chapter ch = null;
+        ChapterItem ch = null;
         Context context = getApplicationContext();
         Resources res = context.getResources();
         InputSource inputSrc = new InputSource(getResources().openRawResource(R.raw.itemdata));
@@ -58,8 +63,9 @@ public class ChapterListActivity extends AppCompatActivity {
         try {
             NodeList nodes = (NodeList) xpath.evaluate("//Data/Part[@index=" + part_index + "]/Chapter", inputSrc, XPathConstants.NODESET);
             for (int i = 0; i < nodes.getLength(); i++) {
-                ch = new Chapter((String) xpath.evaluate("./@title", nodes.item(i), XPathConstants.STRING),
-                        context.getResources().getIdentifier("ch" + part_index + "-" + (i + 1),
+                String chidx="ch"+(String) xpath.evaluate("./@index", nodes.item(i));
+                ch = new ChapterItem((String) xpath.evaluate("./@title", nodes.item(i), XPathConstants.STRING),
+                        context.getResources().getIdentifier(chidx,
                                 "drawable", context.getPackageName()));
                 chapterList.add(ch);
             }

@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
-    private Home_Item[] homeItems = {new Home_Item("为什么要学数学", R.drawable.apple), new Home_Item("数学过敏症", R.drawable.banana),
-            new Home_Item("积分先生", R.drawable.orange), new Home_Item("导数先生", R.drawable.watermelon),
-            new Home_Item("微积分的历史", R.drawable.pear), new Home_Item("微积分的应用", R.drawable.grape)};
+    private ChapterItem[] homeItems = {new ChapterItem("为什么要学数学", R.drawable.apple), new ChapterItem("数学过敏症", R.drawable.banana),
+            new ChapterItem("积分先生", R.drawable.orange), new ChapterItem("导数先生", R.drawable.watermelon),
+            new ChapterItem("微积分的历史", R.drawable.pear), new ChapterItem("微积分的应用", R.drawable.grape)};
 
-    private List<Home_Item> homeItemList = new ArrayList<>();
+    private List<ChapterItem> homeItemList = new ArrayList<>();
 
     private ItemAdapter adapter;
 
@@ -113,17 +113,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void iniHomeItem() {
         homeItemList.clear();
-        Home_Item a = new Home_Item("为什么要学数学",R.drawable.apple);
+        ChapterItem a = new ChapterItem("为什么要学数学",R.drawable.apple);
         homeItemList.add(a);
-        Home_Item b = new Home_Item("数学过敏症",R.drawable.banana);
+        ChapterItem b = new ChapterItem("数学过敏症",R.drawable.banana);
         homeItemList.add(b);
-        Home_Item c = new Home_Item("积分先生",R.drawable.orange);
+        ChapterItem c = new ChapterItem("积分先生",R.drawable.orange);
         homeItemList.add(c);
-        Home_Item d = new Home_Item("导数先生",R.drawable.watermelon);
+        ChapterItem d = new ChapterItem("导数先生",R.drawable.watermelon);
         homeItemList.add(d);
-        Home_Item e = new Home_Item("微积分的历史",R.drawable.pear);
+        ChapterItem e = new ChapterItem("微积分的历史",R.drawable.pear);
         homeItemList.add(e);
-        Home_Item f = new Home_Item("微积分的应用",R.drawable.grape);
+        ChapterItem f = new ChapterItem("微积分的应用",R.drawable.grape);
         homeItemList.add(f);
     }
 
