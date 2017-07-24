@@ -1,4 +1,4 @@
-package com.example.materialtest;
+package io.github.alphacalculus.alphacalculus;
 
 import android.content.Intent;
 import android.os.Bundle;

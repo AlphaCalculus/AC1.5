@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Data>
+    <Part index="1" title="微分部分">
+        <Chapter index="01" title="为什么要学数学"></Chapter>
+        <Chapter index="02" title="数学过敏症对策"></Chapter>
+        <Chapter index="03" title="导数有什么用"></Chapter>
+        <Chapter index="04" title="某一点的斜率和瞬间斜率"></Chapter>
+        <Chapter index="05" title="曲线的高峰"></Chapter>
+        <Chapter index="06" title="如何画曲线图"></Chapter>
+        <Chapter index="07" title="如何使用导数"></Chapter>
+        <Chapter index="08" title="用导数处理图像"></Chapter>
+        <Chapter index="09" title="如何求斜率"></Chapter>
+        <Chapter index="10" title="怎样在曲线上取两点"></Chapter>
+        <Chapter index="11" title="使曲线上的两点不断接近"></Chapter>
+        <Chapter index="12" title="什么是极限"></Chapter>
+        <Chapter index="13" title="什么是无限接近"></Chapter>
+        <Chapter index="14" title="怎样利用数学算式表示极限"></Chapter>
+        <Chapter index="15" title="极值的求法和表示方法"></Chapter>
+    </Part>
+    <Part index="2" title="积分部分">
+        <Chapter index="01" title="积分和导数的关系"></Chapter>
+        <Chapter index="02" title="积分的表示方法"></Chapter>
+        <Chapter index="03" title="积分的读法"></Chapter>
+        <Chapter index="04" title="积分的计算练习"></Chapter>
+        <Chapter index="05" title="什么是积分常数"></Chapter>
+        <Chapter index="06" title="为什么是 C"></Chapter>
+        <Chapter index="07" title="什么是原函数"></Chapter>
+        <Chapter index="08" title="导数和积分真的是逆运算吗"></Chapter>
+        <Chapter index="09" title="积分是变化的集合"></Chapter>
+        <Chapter index="10" title="从不定积分到定积分"></Chapter>
+        <Chapter index="11" title="有区间范围的积分"></Chapter>
+        <Chapter index="12" title="不定积分、定积分和面积"></Chapter>
+        <Chapter index="13" title="dx 的宽度"></Chapter>
+        <Chapter index="14" title="分割求面积的方法"></Chapter>
+        <Chapter index="15" title="定积分的不同求解方法"></Chapter>
+    </Part>
+</Data>

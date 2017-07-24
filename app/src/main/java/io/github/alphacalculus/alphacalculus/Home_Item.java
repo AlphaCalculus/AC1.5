@@ -1,4 +1,4 @@
-package com.example.materialtest;
+package io.github.alphacalculus.alphacalculus;
 
 public class Home_Item {
 

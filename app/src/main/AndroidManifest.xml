@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.materialtest">
+    package="io.github.alphacalculus.alphacalculus">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="io.github.alphacalculus.alphacalculus.MainActivity"
             android:label="不学微积分">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +18,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ItemActivity"
+            android:name="io.github.alphacalculus.alphacalculus.ItemActivity"
             android:theme="@style/ItemActivityTheme">
         </activity>
-        <activity android:name=".ChapterListActivity">
+        <activity android:name="io.github.alphacalculus.alphacalculus.ChapterListActivity">
 
         </activity>
 
