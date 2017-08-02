@@ -52,8 +52,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
                 int position = holder.getAdapterPosition();
                 ChapterItem homeItem = mHomeItemList.get(position);
                 Intent intent = new Intent(mContext, ItemActivity.class);
-                intent.putExtra(ItemActivity.ITEM_NAME, homeItem.getName());
-                intent.putExtra(ItemActivity.ITEM_IMAGE_ID, homeItem.getImageId());
+                intent.putExtra(ItemActivity.CHAPTER_ITEM, homeItem);
                 mContext.startActivity(intent);
             }
         });

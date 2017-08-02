@@ -22,21 +22,21 @@ public class ChapterListAdapter extends ArrayAdapter<ChapterItem> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ChapterItem daoshu = getItem(position);
+        ChapterItem chapter = getItem(position);
         View view;
         ViewHolder viewHolder;
         if (convertView == null) {
             view = LayoutInflater.from(getContext()).inflate(resourceId,null);
             viewHolder = new ViewHolder();
-            viewHolder.imageView = (ImageView) view.findViewById (R.id.daoshu_image);
-            viewHolder.nameView = (TextView) view.findViewById (R.id.daoshu_name);
+            viewHolder.imageView = (ImageView) view.findViewById(R.id.chapter_image);
+            viewHolder.nameView = (TextView) view.findViewById(R.id.chapter_name);
             view.setTag(viewHolder); // 将ViewHolder存储在View中
         } else {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag(); // 重新获取ViewHolder
         }
-        viewHolder.imageView.setImageResource(daoshu.getImageId());
-        viewHolder.nameView.setText(daoshu.getName());
+        viewHolder.imageView.setImageResource(chapter.getImageId());
+        viewHolder.nameView.setText(chapter.getName());
         return view;
     }
 

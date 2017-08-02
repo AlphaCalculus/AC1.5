@@ -4,12 +4,12 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/daoshu_image"
+        android:id="@+id/chapter_image"
         android:layout_width="60dp"
         android:layout_height="60dp" />
 
     <TextView
-        android:id="@+id/daoshu_name"
+        android:id="@+id/chapter_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

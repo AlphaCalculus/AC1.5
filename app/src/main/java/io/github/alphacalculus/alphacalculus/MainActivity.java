@@ -22,9 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
-    private ChapterItem[] homeItems = {new ChapterItem("为什么要学数学", R.drawable.apple), new ChapterItem("数学过敏症", R.drawable.banana),
-            new ChapterItem("积分先生", R.drawable.orange), new ChapterItem("导数先生", R.drawable.watermelon),
-            new ChapterItem("微积分的历史", R.drawable.pear), new ChapterItem("微积分的应用", R.drawable.grape)};
+    private ChapterItem[] homeItems = {new ChapterItem("为什么要学数学", R.drawable.apple, ""),
+            new ChapterItem("数学过敏症", R.drawable.banana, ""),
+            new ChapterItem("积分先生", R.drawable.orange, ""),
+            new ChapterItem("导数先生", R.drawable.watermelon, ""),
+            new ChapterItem("微积分的历史", R.drawable.pear, ""),
+            new ChapterItem("微积分的应用", R.drawable.grape, "")};
 
     private List<ChapterItem> homeItemList = new ArrayList<>();
 
@@ -113,17 +116,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void iniHomeItem() {
         homeItemList.clear();
-        ChapterItem a = new ChapterItem("为什么要学数学",R.drawable.apple);
+        ChapterItem a = new ChapterItem("为什么要学数学", R.drawable.apple, "");
         homeItemList.add(a);
-        ChapterItem b = new ChapterItem("数学过敏症",R.drawable.banana);
+        ChapterItem b = new ChapterItem("数学过敏症", R.drawable.banana, "");
         homeItemList.add(b);
-        ChapterItem c = new ChapterItem("积分先生",R.drawable.orange);
+        ChapterItem c = new ChapterItem("积分先生", R.drawable.orange, "");
         homeItemList.add(c);
-        ChapterItem d = new ChapterItem("导数先生",R.drawable.watermelon);
+        ChapterItem d = new ChapterItem("导数先生", R.drawable.watermelon, "");
         homeItemList.add(d);
-        ChapterItem e = new ChapterItem("微积分的历史",R.drawable.pear);
+        ChapterItem e = new ChapterItem("微积分的历史", R.drawable.pear, "");
         homeItemList.add(e);
-        ChapterItem f = new ChapterItem("微积分的应用",R.drawable.grape);
+        ChapterItem f = new ChapterItem("微积分的应用", R.drawable.grape, "");
         homeItemList.add(f);
     }
 

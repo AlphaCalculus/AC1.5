@@ -18,17 +18,22 @@ public class ItemActivity extends AppCompatActivity {
 
     public static final String ITEM_IMAGE_ID = "item_image_id";
 
+    public static final String CHAPTER_ITEM = "chapter_item";
+
+    private ChapterItem chapterItem = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
         Intent intent = getIntent();
-        String itemName = intent.getStringExtra(ITEM_NAME);
-        int itemImageId = intent.getIntExtra(ITEM_IMAGE_ID, 0);
+        chapterItem = (ChapterItem) intent.getExtras().getParcelable(CHAPTER_ITEM);
+        String itemName = chapterItem.getName();
+        int itemImageId = chapterItem.getImageId();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         ImageView itemImageView = (ImageView) findViewById(R.id.fruit_image_view);
-        TextView itemContentText = (TextView) findViewById(R.id.fruit_content_text);
+        TextView itemContentText = (TextView) findViewById(R.id.chapter_content_text);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -41,11 +46,14 @@ public class ItemActivity extends AppCompatActivity {
     }
 
     private String generateItemContent(String itemName) {
-        StringBuilder fruitContent = new StringBuilder();
+        /*
+        StringBuilder chapterContent = new StringBuilder();
         for (int i = 0; i < 200; i++) {
-            fruitContent.append(itemName);
+            chapterContent.append(itemName);
         }
-        return fruitContent.toString();
+        return chapterContent.toString();
+            */
+        return chapterItem.getContent();
     }
 
     @Override

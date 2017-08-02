@@ -37,7 +37,7 @@ public class ChapterListActivity extends AppCompatActivity {
                 initChapters(2);
                 break;
         }
-        ChapterListAdapter adapter = new ChapterListAdapter(ChapterListActivity.this, R.layout.daoshu_item, chapterList);
+        ChapterListAdapter adapter = new ChapterListAdapter(ChapterListActivity.this, R.layout.chapter_list_item, chapterList);
         ListView listView = (ListView) findViewById(R.id.chapter_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -47,8 +47,7 @@ public class ChapterListActivity extends AppCompatActivity {
 //                Toast.makeText(ChapterListActivity.this, chapter.getName(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ChapterListActivity.this, ItemActivity.class);
-                intent.putExtra(ItemActivity.ITEM_NAME, chapter.getName());
-                intent.putExtra(ItemActivity.ITEM_IMAGE_ID, chapter.getImageId());
+                intent.putExtra(ItemActivity.CHAPTER_ITEM, chapter);
                 startActivity(intent);
             }
         });
@@ -64,9 +63,10 @@ public class ChapterListActivity extends AppCompatActivity {
             NodeList nodes = (NodeList) xpath.evaluate("//Data/Part[@index=" + part_index + "]/Chapter", inputSrc, XPathConstants.NODESET);
             for (int i = 0; i < nodes.getLength(); i++) {
                 String chidx="ch"+(String) xpath.evaluate("./@index", nodes.item(i));
+                String content = xpath.evaluate("./text()", nodes.item(i));
                 ch = new ChapterItem((String) xpath.evaluate("./@title", nodes.item(i), XPathConstants.STRING),
                         context.getResources().getIdentifier(chidx,
-                                "drawable", context.getPackageName()));
+                                "drawable", context.getPackageName()), content);
                 chapterList.add(ch);
             }
         } catch (XPathExpressionException e) {
