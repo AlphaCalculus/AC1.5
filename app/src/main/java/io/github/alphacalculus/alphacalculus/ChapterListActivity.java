@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -21,10 +22,10 @@ public class ChapterListActivity extends AppCompatActivity {
         setContentView(R.layout.chapter_list);
         switch (getIntent().getExtras().getInt("part")) {
             case R.id.nav_daoshu:
-                initChapters(0);
+                initChapters(1);
                 break;
             case R.id.nav_jifen:
-                initChapters(1);
+                initChapters(2);
                 break;
         }
         ChapterListAdapter adapter = new ChapterListAdapter(ChapterListActivity.this, R.layout.chapter_list_item, chapterList);
@@ -44,11 +45,13 @@ public class ChapterListActivity extends AppCompatActivity {
     }
 
     private void initChapters(int part_index) {
+        /*
         for (int i = 0; i < ChapterItemFactory.getInstance().getChapterCount(part_index); i++) {
             ChapterItem ch = ChapterItemFactory.getInstance().getChapter(part_index, i);
             if (ch != null)
                 chapterList.add(ch);
-        }
+        }*/
+        chapterList = new ArrayList<>(Arrays.asList(ChapterItemFactory.getInstance().getChapters(part_index)));
     }
 
 }

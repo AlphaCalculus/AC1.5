@@ -15,22 +15,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
-    private ChapterItem[] homeItems = {new ChapterItem("为什么要学数学", R.drawable.apple, ""),
+    //private ChapterItem[] homeItems = null;
+    /* {new ChapterItem("为什么要学数学", R.drawable.apple, ""),
             new ChapterItem("数学过敏症", R.drawable.banana, ""),
             new ChapterItem("积分先生", R.drawable.orange, ""),
             new ChapterItem("导数先生", R.drawable.watermelon, ""),
             new ChapterItem("微积分的历史", R.drawable.pear, ""),
-            new ChapterItem("微积分的应用", R.drawable.grape, "")};
+            new ChapterItem("微积分的应用", R.drawable.grape, "")};*/
 
-    private List<ChapterItem> homeItemList = new ArrayList<>();
-
+    private List<ChapterItem> homeItemList = null;
     private ItemAdapter adapter;
 
     //private SwipeRefreshLayout swipeRefresh;
@@ -76,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        homeItemList = ChapterItemFactory.getInstance().getChapterList(0);
 
-        iniHomeItem();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
@@ -93,42 +92,6 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
-    /*private void refreshFruits() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        iniHomeItem();
-                        adapter.notifyDataSetChanged();
-                        swipeRefresh.setRefreshing(false);
-                    }
-                });
-            }
-        }).start();
-    }*/
-
-    private void iniHomeItem() {
-        homeItemList.clear();
-        ChapterItem a = new ChapterItem("为什么要学数学", R.drawable.apple, "");
-        homeItemList.add(a);
-        ChapterItem b = new ChapterItem("数学过敏症", R.drawable.banana, "");
-        homeItemList.add(b);
-        ChapterItem c = new ChapterItem("积分先生", R.drawable.orange, "");
-        homeItemList.add(c);
-        ChapterItem d = new ChapterItem("导数先生", R.drawable.watermelon, "");
-        homeItemList.add(d);
-        ChapterItem e = new ChapterItem("微积分的历史", R.drawable.pear, "");
-        homeItemList.add(e);
-        ChapterItem f = new ChapterItem("微积分的应用", R.drawable.grape, "");
-        homeItemList.add(f);
-    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar, menu);
