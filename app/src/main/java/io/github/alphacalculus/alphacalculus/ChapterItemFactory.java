@@ -29,6 +29,10 @@ class ChapterItemFactory {
     private NodeList parts;
     private int part_number;
     private int[] chapter_number = null;
+    private ArrayList[] ci = {null,null,null};
+    private LearningLog learningLog = new LearningLog();
+
+    public LearningLog getLearningLog() { return learningLog; }
 
     public void readXML(Context context) {
         InputSource __inputSrc = new InputSource(context.getResources().openRawResource(R.raw.itemdata));
@@ -72,7 +76,7 @@ class ChapterItemFactory {
             for (String s : contentLines) {
                 content += s.trim() + "\n";
             }
-            ch = new ChapterItem((String) xpath.evaluate("./@title", node, XPathConstants.STRING),
+            ch = new ChapterItem(part_idx,chapter_idx - 1,(String) xpath.evaluate("./@title", node, XPathConstants.STRING),
                     context.getResources().getIdentifier(chidx,
                             "drawable", context.getPackageName()), content);
         } catch (XPathExpressionException e) {
@@ -91,13 +95,24 @@ class ChapterItemFactory {
     }
 
     public ArrayList<ChapterItem> getChapterList(int part_idx) {
+        if (ci[part_idx]!=null) {
+            return ci[part_idx];
+        }
         int chapterN = getChapterCount(part_idx);
         ArrayList<ChapterItem> l = new ArrayList<ChapterItem>();
         for (int i = 0; i < chapterN; i++) {
             ChapterItem ch = getChapter(part_idx, i);
-            System.err.print(ch);
             l.add(ch);
         }
+        ci[part_idx]=l;
         return l;
+    }
+
+    public ChapterItem getChapterCached(int part_idx, int chapter_idx) {
+        if (ci[part_idx]!=null) {
+            return (ChapterItem) ci[part_idx].get(chapter_idx);
+        } else {
+            return getChapter(part_idx,chapter_idx);
+        }
     }
 }

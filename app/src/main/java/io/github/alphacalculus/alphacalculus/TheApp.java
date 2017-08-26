@@ -9,7 +9,7 @@ public class TheApp extends Application {
         return app;
     }
 
-    ;
+
 
     @Override
     public void onCreate() {

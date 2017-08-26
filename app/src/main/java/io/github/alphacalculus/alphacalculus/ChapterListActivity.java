@@ -28,8 +28,8 @@ public class ChapterListActivity extends AppCompatActivity {
                 initChapters(2);
                 break;
         }
-        ChapterListAdapter adapter = new ChapterListAdapter(ChapterListActivity.this, R.layout.chapter_list_item, chapterList);
-        ListView listView = (ListView) findViewById(R.id.chapter_list);
+        final ChapterListAdapter adapter = new ChapterListAdapter(ChapterListActivity.this, R.layout.chapter_list_item, chapterList);
+        final ListView listView = (ListView) findViewById(R.id.chapter_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -40,6 +40,12 @@ public class ChapterListActivity extends AppCompatActivity {
                 Intent intent = new Intent(ChapterListActivity.this, ItemActivity.class);
                 intent.putExtra(ItemActivity.CHAPTER_ITEM, chapter);
                 startActivity(intent);
+            }
+        });
+        ChapterItemFactory.getInstance().getLearningLog().register(new LearningLog.OnLearnedListener() {
+            @Override
+            public void onLearned(int part, int chapter) {
+                listView.setAdapter(adapter);
             }
         });
     }

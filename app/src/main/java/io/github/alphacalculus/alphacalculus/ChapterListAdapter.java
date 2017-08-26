@@ -1,6 +1,7 @@
 package io.github.alphacalculus.alphacalculus;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,9 @@ public class ChapterListAdapter extends ArrayAdapter<ChapterItem> {
         }
         viewHolder.imageView.setImageResource(chapter.getImageId());
         viewHolder.nameView.setText(chapter.getName());
+        viewHolder.nameView.setTextColor(ChapterItemFactory
+                .getInstance().getLearningLog().
+                        isLearned(chapter)?Color.rgb(0,200,0):Color.rgb(200,0,0));
         return view;
     }
 
