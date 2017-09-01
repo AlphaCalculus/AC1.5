@@ -3,14 +3,14 @@
     package="io.github.alphacalculus.alphacalculus">
 
     <application
+        android:name=".TheApp"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="不学微积分"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".TheApp">
+        android:theme="@style/AppTheme">
         <activity
-            android:name="io.github.alphacalculus.alphacalculus.MainActivity"
+            android:name=".MainActivity"
             android:label="不学微积分">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +19,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.github.alphacalculus.alphacalculus.ItemActivity"
-            android:theme="@style/ItemActivityTheme">
-        </activity>
-        <activity android:name="io.github.alphacalculus.alphacalculus.ChapterListActivity">
-
-        </activity>
-
+            android:name=".ItemActivity"
+            android:theme="@style/ItemActivityTheme"></activity>
+        <activity android:name=".ChapterListActivity"></activity>
+        <activity android:name=".ImageViewActivity"></activity>
     </application>
 
 </manifest>
