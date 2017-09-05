@@ -17,6 +17,11 @@ public class LearningLog {
         part_max_learned[2] = sharedPref.getInt("max_2", -1);
     }
 
+    /**
+     * Set chapter of part as learned.
+     * @param part
+     * @param chapter
+     */
     public void doLearn(int part, int chapter) {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean(makeKey(part,chapter), true);
@@ -36,12 +41,20 @@ public class LearningLog {
         editor.commit();
     }
 
+    /**
+     * Check if chapter of part is learned.
+     * @param part
+     * @param chapter
+     * @return
+     */
     public boolean isLearned(int part, int chapter) {
         return sharedPref.getBoolean(makeKey(part,chapter), false);
     }
     public boolean isLearned(ChapterItem chapter) {
         return isLearned(chapter.getPartIdx(),chapter.getChapterIdx());
     }
+
+    // Utils
 
     public String makeKey(int part, int chapter) {
         return Integer.toString(part)+"_"+Integer.toString(chapter);

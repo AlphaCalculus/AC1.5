@@ -15,6 +15,9 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 class ChapterItemFactory {
+
+    // Singleton.
+
     private static ChapterItemFactory __factory = new ChapterItemFactory();
 
     public static ChapterItemFactory getInstance() {
@@ -62,6 +65,10 @@ class ChapterItemFactory {
         }
     }
 
+    /** Read one chapter content from xml.
+     * @param part_idx 0: homepage; 1: Derivatives; 2: Integrals.
+     * @param chapter_idx starting with 0.
+     */
     public ChapterItem getChapter(int part_idx, int chapter_idx) {
         ChapterItem ch = null;
         Context context = TheApp.getInstance().getApplicationContext();
@@ -91,6 +98,11 @@ class ChapterItemFactory {
         return ch;
     }
 
+    /**
+     * Get all chapters in the part of part_idx.
+     * @param part_idx 0: homepage; 1: Derivatives; 2: Integrals.
+     * @return An array of chapters.
+     */
     public ChapterItem[] getChapters(int part_idx) {
         int chapterN = getChapterCount(part_idx);
         ChapterItem[] l = new ChapterItem[chapterN];
@@ -100,6 +112,9 @@ class ChapterItemFactory {
         return l;
     }
 
+    /**
+     * ArrayList version of getChapters
+     */
     public ArrayList<ChapterItem> getChapterList(int part_idx) {
         if (ci[part_idx]!=null) {
             return ci[part_idx];
@@ -114,6 +129,9 @@ class ChapterItemFactory {
         return l;
     }
 
+    /**
+     * Cached version of getChapter
+     */
     public ChapterItem getChapterCached(int part_idx, int chapter_idx) {
         if (ci[part_idx]!=null) {
             return (ChapterItem) ci[part_idx].get(chapter_idx);

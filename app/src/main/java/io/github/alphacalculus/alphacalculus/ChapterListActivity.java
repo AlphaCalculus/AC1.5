@@ -35,8 +35,7 @@ public class ChapterListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ChapterItem chapter = chapterList.get(position);
-//                Toast.makeText(ChapterListActivity.this, chapter.getName(), Toast.LENGTH_SHORT).show();
-
+                // Open a new ItemActivity to show the clicked chapter.
                 Intent intent = new Intent(ChapterListActivity.this, ItemActivity.class);
                 intent.putExtra(ItemActivity.CHAPTER_ITEM, chapter);
                 startActivity(intent);
@@ -51,12 +50,6 @@ public class ChapterListActivity extends AppCompatActivity {
     }
 
     private void initChapters(int part_index) {
-        /*
-        for (int i = 0; i < ChapterItemFactory.getInstance().getChapterCount(part_index); i++) {
-            ChapterItem ch = ChapterItemFactory.getInstance().getChapter(part_index, i);
-            if (ch != null)
-                chapterList.add(ch);
-        }*/
         chapterList = new ArrayList<>(Arrays.asList(ChapterItemFactory.getInstance().getChapters(part_index)));
     }
 

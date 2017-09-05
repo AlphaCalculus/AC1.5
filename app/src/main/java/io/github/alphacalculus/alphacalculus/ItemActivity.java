@@ -120,13 +120,6 @@ public class ItemActivity extends AppCompatActivity {
         }
     }
     private String generateItemContent(String itemName) {
-        /*
-        StringBuilder chapterContent = new StringBuilder();
-        for (int i = 0; i < 200; i++) {
-            chapterContent.append(itemName);
-        }
-        return chapterContent.toString();
-            */
         return chapterItem.getContent();
     }
 

@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
+/**
+ * Show image in a new Activity.
+ */
 public class ImageViewActivity extends AppCompatActivity {
 
     @Override

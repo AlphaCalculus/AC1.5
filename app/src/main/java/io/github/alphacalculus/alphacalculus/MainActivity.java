@@ -21,18 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
 
-    //private ChapterItem[] homeItems = null;
-    /* {new ChapterItem("为什么要学数学", R.drawable.apple, ""),
-            new ChapterItem("数学过敏症", R.drawable.banana, ""),
-            new ChapterItem("积分先生", R.drawable.orange, ""),
-            new ChapterItem("导数先生", R.drawable.watermelon, ""),
-            new ChapterItem("微积分的历史", R.drawable.pear, ""),
-            new ChapterItem("微积分的应用", R.drawable.grape, "")};*/
-
     private List<ChapterItem> homeItemList = null;
     private ItemAdapter adapter;
 
-    //private SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
-        //navView.setCheckedItem(R.id.nav_host);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -59,9 +49,8 @@ public class MainActivity extends AppCompatActivity {
                    case R.id.nav_daoshu:
                     case R.id.nav_jifen:
                        item.setChecked(true);
-                        Intent intent = new Intent(MainActivity.this, ChapterListActivity.class);
-                        intent.putExtra("part", id);
-                       //item.setIntent(intent);
+                       Intent intent = new Intent(MainActivity.this, ChapterListActivity.class);
+                       intent.putExtra("part", id);
                        startActivity(intent);
                        break;
                    case R.id.nav_shuoming:
@@ -82,14 +71,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ItemAdapter(homeItemList);
         recyclerView.setAdapter(adapter);
-        //swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
-        //swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
-        /*swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshFruits();
-            }
-        });*/
     }
 
 
