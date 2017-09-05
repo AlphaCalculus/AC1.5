@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
@@ -31,15 +32,20 @@ public class TextViewWithImages extends AppCompatTextView {
 
     @Override
     public void setText(CharSequence text, BufferType type) {
-        Spannable s = getTextWithImages(getContext(), text, getActivity());
+        Spannable s = getTextWithImages(this, text);
         super.setMovementMethod(LinkMovementMethod.getInstance());
         super.setText(s, BufferType.SPANNABLE);
     }
 
     private static final Spannable.Factory spannableFactory = Spannable.Factory.getInstance();
-
-    private static boolean addImages(Context context, Spannable spannable, final Activity parent) {
-        Pattern refImg = Pattern.compile("\\Q[img src=\\E([a-zA-Z0-9_]+?)\\Q/]\\E");
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+    private static boolean addImages(TextViewWithImages self, Spannable spannable) {
+        Context context = self.getContext();
+        final Activity parent = self.getActivity();
+        Pattern refImg = Pattern.compile("\\Q[img\\E\\s+?src=([a-zA-Z0-9_]+?)/\\Q]\\E");
         boolean hasChanges = false;
 
         Matcher matcher = refImg.matcher(spannable);
@@ -57,9 +63,18 @@ public class TextViewWithImages extends AppCompatTextView {
             }
             final String resname = spannable.subSequence(matcher.start(1), matcher.end(1)).toString().trim();
             final int id = context.getResources().getIdentifier(resname, "drawable", context.getPackageName());
+            if (id==0) {
+                continue;
+            }
             if (set) {
                 hasChanges = true;
-                spannable.setSpan(new ImageSpan(context, id),
+                Drawable d = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    d = context.getDrawable(id);
+                } else {
+                    d = context.getResources().getDrawable(id);
+                }
+                spannable.setSpan(new ResizeImageSpan(d,self.getWidth()),
                         matcher.start(),
                         matcher.end(),
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -92,9 +107,9 @@ public class TextViewWithImages extends AppCompatTextView {
         return null;
     }
 
-    private static Spannable getTextWithImages(Context context, CharSequence text, Activity parent) {
+    private static Spannable getTextWithImages(TextViewWithImages t, CharSequence text) {
         Spannable spannable = spannableFactory.newSpannable(text);
-        addImages(context, spannable, parent);
+        addImages(t, spannable);
         return spannable;
     }
 }

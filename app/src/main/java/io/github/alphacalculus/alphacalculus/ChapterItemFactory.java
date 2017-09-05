@@ -69,7 +69,13 @@ class ChapterItemFactory {
         chapter_idx += 1;
         try {
             Node node = (Node) xpath.evaluate("(./Chapter)[" + chapter_idx + "]", parts.item(part_idx), XPathConstants.NODE);
-            String chidx = "ch" + (String) xpath.evaluate("./@index", node);
+            String chidx = "ch";
+            try {
+                Integer.parseInt((String) xpath.evaluate("./@index", node, XPathConstants.STRING));
+                chidx+=(chapter_idx>=10?"":"0")+(chapter_idx);
+            } catch (Throwable throwable){
+                chidx="ch"+(String) xpath.evaluate("./@index", node);
+            }
             String content = xpath.evaluate("./text()", node);
             String[] contentLines = content.split("[\r\n]");
             content = "";
