@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -34,7 +34,6 @@ public class ItemActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         ImageView itemImageView = (ImageView) findViewById(R.id.fruit_image_view);
-        TextView itemContentText = (TextView) findViewById(R.id.chapter_content_text);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -66,12 +65,12 @@ public class ItemActivity extends AppCompatActivity {
         String itemName = chapterItem.getName();
         int itemImageId = chapterItem.getImageId();
         ImageView itemImageView = (ImageView) findViewById(R.id.fruit_image_view);
-        TextView itemContentText = (TextView) findViewById(R.id.chapter_content_text);
+        WebView webView = (WebView) findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("http://alphacalculus.byethost11.com/chapters/"+chapterItem.getPartIdx()+"/"+(chapterItem.getChapterIdx()+1)+".html");
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(itemName);
         Glide.with(this).load(itemImageId).into(itemImageView);
-        String fruitContent = generateItemContent(itemName);
-        itemContentText.setText(fruitContent);
         deal_with_btn_learn();
     }
 
@@ -118,9 +117,6 @@ public class ItemActivity extends AppCompatActivity {
                 }
             });
         }
-    }
-    private String generateItemContent(String itemName) {
-        return chapterItem.getContent();
     }
 
     @Override

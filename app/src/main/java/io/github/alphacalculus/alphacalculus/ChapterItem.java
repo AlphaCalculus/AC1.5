@@ -9,6 +9,7 @@ public class ChapterItem implements Parcelable {
 
     private String name;
     private String content;
+    private String video;
     private int partIdx;
     private int chapterIdx;
     private int imageId;
@@ -36,6 +37,9 @@ public class ChapterItem implements Parcelable {
         return imageId;
     }
 
+    public String getVideo() { return video; }
+    void setVideo(String nvideo) { this.video = nvideo; }
+
     public ChapterItem getNextChapter() {
         if (ChapterItemFactory.getInstance().getChapterCount(this.partIdx) > this.chapterIdx + 1) {
             return ChapterItemFactory.getInstance().getChapterCached(this.partIdx, this.chapterIdx+1);
@@ -57,7 +61,7 @@ public class ChapterItem implements Parcelable {
     }
     // Parcelling part
     public ChapterItem(Parcel in) {
-        String[] data = new String[2];
+        String[] data = new String[3];
         int[] ids = new int[2];
 
         in.readStringArray(data);
@@ -65,6 +69,7 @@ public class ChapterItem implements Parcelable {
         // the order needs to be the same as in writeToParcel() method
         this.name = data[0];
         this.content = data[1];
+        this.video = data[2];
         this.imageId = in.readInt();
         this.partIdx = ids[0];
         this.chapterIdx = ids[1];
@@ -76,7 +81,7 @@ public class ChapterItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[]{this.name, this.content});
+        dest.writeStringArray(new String[]{this.name, this.content, this.video});
         dest.writeIntArray(new int[]{this.partIdx, this.chapterIdx});
         dest.writeInt(imageId);
     }

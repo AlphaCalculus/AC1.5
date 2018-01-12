@@ -25,8 +25,8 @@ class ChapterItemFactory {
     }
 
     private ChapterItemFactory() {
-        Context context = TheApp.getInstance().getApplicationContext();
-        readXML(context);
+        final Context context = TheApp.getInstance().getApplicationContext();
+                readXML(context);
     }
 
     private NodeList parts;
@@ -38,7 +38,8 @@ class ChapterItemFactory {
     public LearningLog getLearningLog() { return learningLog; }
 
     public void readXML(Context context) {
-        InputSource __inputSrc = new InputSource(context.getResources().openRawResource(R.raw.itemdata));
+        InputSource __inputSrc;
+        __inputSrc = new InputSource(context.getResources().openRawResource(R.raw.itemdata));
         XPath xpath = XPathFactory.newInstance().newXPath();
         try {
             parts = ((NodeList) xpath.evaluate("//Data/Part", __inputSrc, XPathConstants.NODESET));
@@ -83,6 +84,7 @@ class ChapterItemFactory {
             } catch (Throwable throwable){
                 chidx="ch"+(String) xpath.evaluate("./@index", node);
             }
+
             String content = xpath.evaluate("./text()", node);
             String[] contentLines = content.split("[\r\n]");
             content = "";
@@ -92,6 +94,15 @@ class ChapterItemFactory {
             ch = new ChapterItem(part_idx,chapter_idx - 1,(String) xpath.evaluate("./@title", node, XPathConstants.STRING),
                     context.getResources().getIdentifier(chidx,
                             "drawable", context.getPackageName()), content);
+
+            try {
+                String vu = (String) xpath.evaluate("./@video", node, XPathConstants.STRING);
+                System.out.println(vu);
+                if (vu != null && !vu.equals("")) {
+                    ch.setVideo("http://alphacalculus.byethost11.com/videos/" + vu);
+                }
+            } catch (Throwable throwable){
+            }
         } catch (XPathExpressionException e) {
             e.printStackTrace();
         }

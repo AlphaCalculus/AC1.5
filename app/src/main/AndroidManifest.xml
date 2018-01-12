@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.alphacalculus.alphacalculus">
-
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="22" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:name=".TheApp"
         android:allowBackup="true"
@@ -22,7 +26,6 @@
             android:name=".ItemActivity"
             android:theme="@style/ItemActivityTheme"></activity>
         <activity android:name=".ChapterListActivity"></activity>
-        <activity android:name=".ImageViewActivity"></activity>
     </application>
 
 </manifest>
