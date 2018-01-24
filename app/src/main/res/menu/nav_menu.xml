@@ -2,6 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_login"
+            android:title="登录" />
+        <item
             android:id="@+id/nav_host"
             android:icon="@drawable/nav_call"
             android:title="主页" />

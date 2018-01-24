@@ -64,8 +64,10 @@
     <Part
         index="1"
         title="微分部分">
+        <Section>
         <Chapter
             index="00"
+            video="1.mp4"
             title="导数有什么用">
             [img src=p1_ch03/]
             导数为什么会存在？当然有它的意义。至于意义为何，我们会在后面一一道来，现在先来说说导数的作用是什么。简而言之，导数是用来分析变化的。
@@ -94,6 +96,7 @@
         </Chapter>
         <Chapter
             index="02"
+            video="2.mp4"
             title="曲线的高峰">
             想知道在何种情况下应该使用导数，首先我们要了解一下如何求斜率。
             斜率并不是特别的数学用语，它表示倾斜程度。倾斜角度越接近90度（垂直），倾斜程度越大。也就是说，此时图形的上升趋势越强。
@@ -106,6 +109,7 @@
         </Chapter>
         <Chapter
             index="03"
+            video="06.mp4"
             title="如何画曲线图">
             接下来我们根据前面画的“气氛热烈程度图”来画“气氛变化趋势图”。
             [img src=p1_ch06_1/]
@@ -147,6 +151,7 @@
         </Chapter>
         <Chapter
             index="06"
+            video="09.mp4"
             title="如何求斜率">
             你还记得学数学时第一次听说斜率是什么时候吗？
             斜率一词是在学习正比例函数时出现的，看来我们和斜率的渊源颇深呐。
@@ -161,6 +166,7 @@
         </Chapter>
         <Chapter
             index="07"
+            video="10.mp4"
             title="怎样在曲线上取两点">
             求斜率的基本方法就是取两点、连线，之后用两点间的“纵向长度差”除以“横向长度差”。
             无论是直线还是曲线，这一原则都不会改变。也就是说，在求曲线上某个点的斜率时，仍需找到两个点。但实际上找到两个点是不可能的。
@@ -206,9 +212,12 @@
             这是表示疲劳程度的函数式。意思是“越接近每天加班，因过度疲劳而病倒的日子越近”。
             综上所述，一个值无限接近另外一个值的状态就是极限。不会计算没关系，能够找到这种感觉就可以了。
         </Chapter>
+        </Section>
+        <Section>
         <Chapter
             index="11"
-            title="怎样利用数学算式表示极限">
+            title="怎样利用数学算式表示极限"
+            lockedby="0">
             找到极限的感觉后，这次我们试试从数学的角度来研究极限。请看看下面的算式。
             例题１：[img src=p1_ch14_1_m/]
             算式表示“使ｎ无限接近１”。ｎ无限接近１，则１－ｎ无限接近１－１，也就是无限接近０。
@@ -230,7 +239,8 @@
         </Chapter>
         <Chapter
             index="12"
-            title="极值的求法和表示方法">
+            title="极值的求法和表示方法"
+            lockedby="0">
             [img src=p1_ch15_1_m/]中的ｘ→ａ表示“ｘ无限接近ａ”，但并不是等于ａ。
             无论接近到何种程度都不相等，这一点很关键。
             所以前面的例题１中，尽管ｎ无限接近１，却不是１，因此１－ｎ的结果也是无限接近０，但不是０。正因为它不等于０，所以例题４可以进行均分。
@@ -244,7 +254,9 @@
         </Chapter>
         <Chapter
             index="13"
-            title="正向接近和负向接近">
+            video="16.mp4"
+            title="正向接近和负向接近"
+            lockedby="0">
             之前我们一直在讲“接近……”，那么究竟如何接近呢？
             例如，
             [img src=p1_ch16_1_m/]
@@ -261,7 +273,9 @@
         </Chapter>
         <Chapter
             index="14"
-            title="正无穷大和负无穷大">
+            video="17.mp4"
+            title="正无穷大和负无穷大"
+            lockedby="0">
             正如你在函数图形上看到的，在[img src=p1_ch17_1_m/]中，x从正向接近和从负向接近结果不同。但是简单地写成（M）是无法弄清到底是从哪方接近的。
             因此，我们要引入新的书写方式。从右接近加上正号（＋），从左接近则加负号（－）。
             [img src=p1_ch17_2_m/][img src=p1_ch17_3_m/]
@@ -274,7 +288,9 @@
         </Chapter>
         <Chapter
             index="15"
-            title="什么是连续性">
+            video="18.mp4"
+            title="什么是连续性"
+            lockedby="0">
             前面举了一个不存在极值的例子，我们再来研究一下极限的模式。
             极限有以下三种模式。假设求自变量x的函数f(x)的极限，当x接近a时，
             [img src=p1_ch18_1_m/]
@@ -287,7 +303,9 @@
         </Chapter>
         <Chapter
             index="16"
-            title="开始计算斜率">
+            video="19.mp4"
+            title="开始计算斜率"
+            lockedby="0">
             前面谈了一下极限的问题。你还记得我们为什么要谈极限吗？
             前面说过，导数是求函数斜率的工具。
             斜率是什么？一次函数的斜率不言而喻。二次以上函数的图形是曲线，曲线的斜率是什么？此时我们可以考虑切线的斜率。那切线的斜率该如何计算呢？
@@ -297,7 +315,9 @@
         </Chapter>
         <Chapter
             index="17"
-            title="“滑动着”求导">
+            video="20.mp4"
+            title="“滑动着”求导"
+            lockedby="0">
             假设我们要求函数f(x)图形上点A的斜率。设点A的坐标为(a,f(a))。
             之前我们强调过，只有一点是无法求斜率的（无法取纵向长度差和横向长度差），因此我们要在附近再取一点B。假设点B比点A坐标值略大，x坐标值的差为h，则B点坐标为（a+h,f(a+h)）。
             我们来求一下AB的斜率。斜率为“纵向长度差÷横向长度差”，纵向长度差为f（a+h）-f（a），横向差为h。
@@ -328,7 +348,9 @@
         </Chapter>
         <Chapter
             index="18"
-            title="求某一点斜率的意义">
+            video="21.mp4"
+            title="求某一点斜率的意义"
+            lockedby="0">
             知道了求某点斜率方法之后可以做些什么呢？
             在导数的众多用途中，使用频率最高的是绘制切线和图形。
             使用导数绘制切线非常方便，用导数可以求斜率，知道斜率，再知道该点的坐标，马上就能写出切线的方程。
@@ -338,7 +360,9 @@
         </Chapter>
         <Chapter
             index="19"
-            title="什么是导函数">
+            video="22.mp4"
+            title="什么是导函数"
+            lockedby="0">
             前面我们写出了函数f（x）的求导公式。
             [img src=p1_ch20_9_m/]
             该算式叫做函数f（x）的导函数。
@@ -353,7 +377,8 @@
         </Chapter>
         <Chapter
             index="20"
-            title="导数的表示方法">
+            title="导数的表示方法"
+            lockedby="0">
             导数的表示方式有若干种，我们讲一下其中最有名的两种方式。
             第一种是一位叫做拉格朗日的学者思考出来的表示方法，也就是前面已经介绍过的带上撇号的方法。
             函数y=f(x)的导数写成y'或f'(x)，这种表示方法十分常见，最大的优点就是简单，形式一目了然，书写也用不上半秒钟，成为了主要的使用方法。
@@ -366,7 +391,9 @@
         </Chapter>
         <Chapter
             index="21"
-            title="导数的其他表示方法">
+            video="24.mp4"
+            title="导数的其他表示方法"
+            lockedby="0">
             导数是求斜率的方法，[img src=p1_ch24_1_m/]就是斜率——纵向差除以横向差。
             数学中Δ表示微小的量，Δ是希腊字母，即d。例如，x轴上的微小增量记为Δx，y轴上的微小增量记为Δy。因此，求函数上两点AB的斜率可以表示为
             [img src=p1_ch24_2_m/]
@@ -379,7 +406,9 @@
         </Chapter>
         <Chapter
             index="22"
-            title="做做习题">例题1：求[img src=p1_ch25_1_m/]在点A（2，2）处的斜率
+            video="25.mp4"
+            title="做做习题"
+            lockedby="0">例题1：求[img src=p1_ch25_1_m/]在点A（2，2）处的斜率
             首先是求导公式：
             [img src=p1_ch25_2_m/]
             带入A点的值：
@@ -392,7 +421,9 @@
         </Chapter>
         <Chapter
             index="23"
-            title="导函数的简单求法及基本公式">
+            video="26-27.mp4"
+            title="导函数的简单求法及基本公式"
+            lockedby="0">
             要高效的熟练地运算导数，也要事先准备好工具，这样才更便于计算。
             1、 p'=0（p为常数）
             2、 (px)'=p（p为常数）
@@ -400,7 +431,9 @@
         </Chapter>
         <Chapter
             index="24"
-            title="函数和的求导公式">
+            video="29.mp4"
+            title="函数和的求导公式"
+            lockedby="0">
             对两个函数的和——f(x)+g(x)——求导，会得到f'(x)+g'(x)。关于x对f(x)求导得到
             [img src=p1_ch27_1_m/]
             因此，关于x对f(x)+g(x)求导，得到
@@ -412,7 +445,9 @@
         </Chapter>
         <Chapter
             index="25"
-            title="x的n次方的导数">
+            video="32.mp4"
+            title="x的n次方的导数"
+            lockedby="0">
             使用导数的基本公式来表示一下[img src=p1_ch28_1_m/]的导数，得到
             [img src=p1_ch28_2_m/]
             这个怎么展开呢？仔细看，我们从n=2开始，
@@ -429,7 +464,9 @@
         </Chapter>
         <Chapter
             index="26"
-            title="函数积求导的方法">
+            video="33.mp4"
+            title="函数积求导的方法"
+            lockedby="0">
             下面我们推导一下两个函数的积——f(x)×g(x)的求导公式。
             首先给出两个函数积的求导公式如下所示：
             [f(x)g(x)]'=f'(x)g(x)+f(x)g'(x)
@@ -446,7 +483,9 @@
         </Chapter>
         <Chapter
             index="27"
-            title="复合函数求导的方法">
+            video="34.mp4"
+            title="复合函数求导的方法"
+            lockedby="0">
             我们已经能对多种函数求导了，下面试试对y=(2x+3)⁸这类乘方运算进行求导。简化这类运算的方法就是“复合函数求导法”。
             我们要把y=(2x+3)⁸分成两个部分。在组合零件时，我们通常都是先将每部分分别组合后再进行整体组装，求导也是如此，我们要将可以简单求导的y=x⁸和y=2x+3分别求导，然后再将其组合。
             刚才我们一直在说y=x⁸，但实际上是(2x+3)⁸，所以直接写成y=x⁸不太好处理。为此我们准备了新字母u。假设u=2x+3，这样原来的算式可以写成y=u⁸。
@@ -457,7 +496,9 @@
         </Chapter>
         <Chapter
             index="28"
-            title="大致画出二次函数图形">
+            video="36.mp4"
+            title="大致画出二次函数图形"
+            lockedby="0">
             我们在中学学过二次函数的画图，但是只能求出顶点，大致描绘出抛物线的形状。与一次函数的图形不同，二次函数的图形都是曲线，因此很难用手绘制出准确的图形。除非逐个点精确计算后再画图，但是很浪费时间。
             因此学会大致画出图形非常重要。
             [img src=p1_ch31_1/]
@@ -468,15 +509,19 @@
         </Chapter>
         <Chapter
             index="29"
-            title="导数与积分">
+            title="导数与积分"
+            lockedby="0">
             到此，导数的学习就告一段落了，你可以会说，导数刚刚入门怎么就结束了呢？
             说的没错，但是告诉你们一个秘密——导数可以帮助学习积分！
             积分不是孤立的，它需要与导数结合在一起。记住这一点，享受接下来的积分学习吧。
         </Chapter>
+        </Section>
     </Part>
     <Part index="2" title="积分部分">
+        <Section>
         <Chapter
             index="01"
+            video="2.1.mp4"
             title="积分和导数的关系">
             导数和积分多配套使用和学习，合成为微积分。
             那么积分究竟是什么呢？是用来干什么的呢？
@@ -494,6 +539,7 @@
         </Chapter>
         <Chapter
             index="02"
+            video="2.2.mp4"
             title="积分的表示方法及其读法">
             下面我们来学习积分的计算方法。
             求函数[img src=p2_ch1_1_m/]关于x的积分。
@@ -528,6 +574,7 @@
         </Chapter>
         <Chapter
             index="04"
+            video="44-45.mp4"
             title="积分常数——C">
             “关于x求导得到[img src=p2_ch2_2_m/]的原函数是什么”，前面我们说是[img src=p2_ch2_5_m/]。其实这并非是正确的答案。
             正如导数的规则所述，常数项在求导时候会被消掉，因此求导后得的函数除了还有各种常数。所有的常数项求导时候都会变成0，因此这些都可以作为该积分的答案。正因如此，只说求积分，我们会得到多个答案。或者说因为常数项可以是任何数，所以存在无数个原函数。
@@ -540,6 +587,7 @@
         </Chapter>
         <Chapter
             index="05"
+            video="46.mp4"
             title="原函数">
             我们在微分部分讲过，对求导得到的形式是或的函数叫做导函数。现在我们介绍一下对求不定积分得到的函数的表示方式及名称。
             对f(x)求不定积分得到的函数叫做原函数。
@@ -549,6 +597,7 @@
         </Chapter>
         <Chapter
             index="06"
+            video="48.mp4"
             title="积分——变化的集合">
             如果导数表示变化，积分就表示变化的集合。对某函数求导，得到的是该函数的变化情况。
             以汽车为例，变化就是踩踏油门和刹车的程度，以及控制方向盘的情况。假设可以记录踩油门和踩刹车的程度，以及控制方向盘的情况，其他人按照记录的驾驶是不是必然会到达相同的地方？
@@ -562,6 +611,7 @@
         </Chapter>
         <Chapter
             index="07"
+            video="49.mp4"
             title="有区间范围的积分">
             [img src=p2_ch6_1_m/]
             比较二者，定积分的积分号上下都有字母，这表示“从何处到何处”的范围。因此被称为定积分。这是新的规则——“从何处起”在下，“到何处止”在上。因此[img
@@ -682,5 +732,66 @@
             如何列算式是关键、要点。
             实际上，有时即便能列出算式也未必就能求出积分。根据算式的列法，有些可以求积分，有些则不能求积分。
         </Chapter>
+        </Section>
     </Part>
+    <AllQuiz>
+        <Quiz>
+            <Question>
+                导数有什么用？
+                <Answer>求积分</Answer>
+                <Answer is_true="true">分析变化</Answer>
+                <Answer>推导</Answer>
+                <Answer>求极值</Answer>
+            </Question>
+            <Question>
+                如果轨道瞬间消失了，那么疾驰在上面的过山车会怎样？
+                <Answer>下落</Answer>
+                <Answer is_true="true">曲线飞出</Answer>
+                <Answer>直线飞出</Answer>
+                <Answer>向上飞出</Answer>
+            </Question>
+            <Question>
+                斜率表示什么？
+                <Answer is_true="true">倾斜程度</Answer>
+                <Answer>倾斜角度</Answer>
+                <Answer>斜坡</Answer>
+                <Answer>倾斜速率</Answer>
+            </Question>
+            <Question>
+                ________表示在某一点的“变化趋势（大小）”
+                <Answer>斜率</Answer>
+                <Answer is_true="true">导数</Answer>
+                <Answer>绝对值</Answer>
+                <Answer>积分</Answer>
+            </Question>
+            <Question>
+                用电脑对图像中的各点亮度________，就能判断出变化剧烈之处的轮廓。
+                <Answer>求积分</Answer>
+                <Answer is_true="true">求导</Answer>
+                <Answer>算斜率</Answer>
+                <Answer>求函数值</Answer>
+            </Question>
+            <Question>
+                求某一点的斜率和求导离不开____
+                <Answer>积分</Answer>
+                <Answer>导数</Answer>
+                <Answer>极值</Answer>
+                <Answer is_true="true">极限</Answer>
+            </Question>
+            <Question>
+                什么是极限？
+                <Answer>求积分</Answer>
+                <Answer is_true="true">无限接近</Answer>
+                <Answer>求导</Answer>
+                <Answer>求极值</Answer>
+            </Question>
+            <Question>
+                什么是无限接近
+                <Answer is_true="true">\(\lim_{x \to a} f(x)=b\)</Answer>
+                <Answer>\(e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!}+…,-\infty \lt x \lt \infty\)</Answer>
+                <Answer>\(a^2+b^2=c^2\)</Answer>
+                <Answer>\((1+x)^n = 1+\frac{nx}{1!}+\frac{n(n-1)x^2}{2!}+…\)</Answer>
+            </Question>
+        </Quiz>
+    </AllQuiz>
 </Data>

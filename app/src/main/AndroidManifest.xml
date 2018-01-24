@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.alphacalculus.alphacalculus">
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:name=".TheApp"
         android:allowBackup="true"
@@ -20,9 +25,19 @@
         </activity>
         <activity
             android:name=".ItemActivity"
-            android:theme="@style/ItemActivityTheme"></activity>
-        <activity android:name=".ChapterListActivity"></activity>
-        <activity android:name=".ImageViewActivity"></activity>
+            android:theme="@style/ItemActivityTheme" />
+        <activity android:name=".ChapterListActivity" />
+        <activity android:name=".ImageViewActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.alphacalculus.alphacalculus.MainActivity" />
+        </activity>
+        <activity android:name=".VideoPlayActivity" />
+        <activity android:name=".QuizActivity"></activity>
     </application>
 
 </manifest>
