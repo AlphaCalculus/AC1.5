@@ -2,23 +2,17 @@ package io.github.alphacalculus.alphacalculus
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.internal.NavigationMenuItemView
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.internal.view.menu.MenuView
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
-
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
@@ -64,6 +58,20 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+                R.id.nav_quiz_log, R.id.nav_learning_log -> {
+                    item.isChecked = true
+
+                    if (TheApp.instance!!.isAuthed) {
+                        setUserState()
+                        intent = Intent(this@MainActivity, QuizLogActivity::class.java)
+                        if (id==R.id.nav_learning_log) {
+                            intent.putExtra(QuizLogActivity.IS_LEARNING_LOG_VIEW, true)
+                        }
+                        startActivity(intent)
+                    } else {
+                        setUserState()
+                    }
+                }
             }
 
             mDrawerLayout!!.closeDrawer(Gravity.LEFT)
@@ -71,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         }
         setUserState()
 
-        homeItemList = ChapterItemFactory.getChapterList(0)
+        homeItemList = ChapterItemFactory.getChapterList(0) as List<ChapterItem>
 
         val recyclerView = findViewById(R.id.recycler_view) as RecyclerView
         val layoutManager = GridLayoutManager(this, 2)
@@ -93,16 +101,16 @@ class MainActivity : AppCompatActivity() {
         usernameView.setText(app.username)
         if (app.isAuthed) {
             val menu = navView.menu
-            System.err.println(menu)
             val item = menu.findItem(R.id.nav_login)
-            System.err.println(item)
             item.title = "登出"
+            menu.findItem(R.id.nav_quiz_log).setVisible(true)
+            menu.findItem(R.id.nav_learning_log).setVisible(true)
         } else {
             val menu = navView.menu
-            System.err.println(menu)
             val item = menu.findItem(R.id.nav_login)
-            System.err.println(item)
             item.title = "登录"
+            val logItem = menu.findItem(R.id.nav_quiz_log)
+            logItem.setVisible(false)
 
         }
     }

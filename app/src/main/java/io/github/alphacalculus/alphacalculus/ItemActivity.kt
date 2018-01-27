@@ -3,23 +3,20 @@ package io.github.alphacalculus.alphacalculus
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Parcelable
 import android.support.design.widget.CollapsingToolbarLayout
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-
+import android.widget.*
 import com.bumptech.glide.Glide
+import java.util.*
 
 class ItemActivity : AppCompatActivity() {
 
     private var chapterItem: ChapterItem? = null
+    private var isLearned = false
+    private var startupDate = Date(System.currentTimeMillis())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +34,34 @@ class ItemActivity : AppCompatActivity() {
             self.chapterItem = self.chapterItem!!.previousChapter
             self.initChapter()
         })
+        startupDate = Date(System.currentTimeMillis())
         val btn_next = findViewById(R.id.btn_next) as Button
         btn_next.setOnClickListener(fun (_) {
-            val self = this@ItemActivity
-            self.chapterItem = self.chapterItem!!.nextChapter
-            self.initChapter()
+            if (TheApp.instance!!.isAuthed) {
+                val learningLogDAO = LearningLogDAO(applicationContext)
+                val currentDate = Date(System.currentTimeMillis())
+                learningLogDAO.setLogPoint(chapterItem!!, (currentDate.time - startupDate.time).toInt())
+                learningLogDAO.setLearned(chapterItem!!)
+                if (chapterItem!!.nextChapter!!.isReadable) {
+                    chapterItem = chapterItem!!.nextChapter
+                    initChapter()
+                } else {
+                    val intent = Intent(this@ItemActivity, QuizActivity::class.java)
+                    intent.putExtra(QuizActivity.QUIZ_ID, chapterItem!!.nextChapter!!.lockedBy)
+                    startActivity(intent)
+                }
+            } else {
+                Toast.makeText(applicationContext, "您没有登录，无法记录学习时间", Toast.LENGTH_SHORT).show()
+                chapterItem = chapterItem!!.nextChapter
+                initChapter()
+            }
         })
         deal_with_btn_learn()
     }
 
     override fun onStart() {
         super.onStart()
+        startupDate = Date(System.currentTimeMillis())
         deal_with_btn_learn()
     }
 
@@ -61,6 +75,14 @@ class ItemActivity : AppCompatActivity() {
         Glide.with(this).load(itemImageId).into(itemImageView)
         val fruitContent = generateItemContent(itemName)
         itemContentText.text = fruitContent
+
+        if (TheApp.instance!!.isAuthed) {
+            val log = LearningLogDAO(context = applicationContext)
+            isLearned = log.isLearned(chapterItem!!)
+        } else {
+            Toast.makeText(applicationContext, "您没有登录，无法记录学习时间", Toast.LENGTH_SHORT).show()
+            isLearned = false;
+        }
         deal_with_btn_learn()
     }
 
@@ -81,23 +103,45 @@ class ItemActivity : AppCompatActivity() {
                 btn_learned.visibility = View.INVISIBLE
             }
         } else if (chapterItem!!.video != Uri.EMPTY) {
-            btn_learned.text = "开始学习"
+            val btn_next = findViewById(R.id.btn_next) as Button
+            btn_next.isEnabled = false
+            btn_learned.text = "暂停"
             btn_learned.isEnabled = true
-            btn_learned.setOnClickListener {
-                val intent = Intent(this@ItemActivity, VideoPlayActivity::class.java)
-                intent.putExtra(ItemActivity.CHAPTER_ITEM,
-                        ChapterItemFactory
-                                .getChapterCached(chapterItem!!.partIdx, chapterItem!!.chapterIdx))
-                startActivity(intent)
+            val videoView: VideoView = findViewById(R.id.videoView) as VideoView
+            val itemImageView = findViewById(R.id.fruit_image_view) as ImageView
+            itemImageView.visibility = ImageView.INVISIBLE
+            videoView.visibility = VideoView.VISIBLE
+            videoView.setVideoURI(chapterItem!!.video)
+            videoView.start()
+            btn_learned.setOnClickListener({
+                if (videoView.isPlaying) {
+                    videoView.pause()
+                    btn_learned.text = "播放"
+                } else {
+                    videoView.start()
+                    btn_learned.text = "暂停"
+                }
+            })
+            videoView.setOnCompletionListener {
+                btn_next.isEnabled = true
+                btn_learned.text = "重看"
+                btn_learned.setOnClickListener({
+                    videoView.seekTo(0)
+                    videoView.start()
+                    btn_learned.setOnClickListener({
+                        if (videoView.isPlaying) {
+                            videoView.pause()
+                            btn_learned.text = "播放"
+                        } else {
+                            videoView.start()
+                            btn_learned.text = "暂停"
+                        }
+                    })
+                })
             }
         } else {
+            btn_learned.visibility = View.INVISIBLE
             btn_learned.text = "学习完毕"
-            val learningLogDAO = LearningLogDAO(applicationContext)
-            btn_learned.isEnabled = !learningLogDAO.isLearned(chapterItem!!)
-            btn_learned.setOnClickListener(fun(_) {
-                learningLogDAO.setLearned(chapterItem!!)
-                btn_learned.isEnabled = false
-            })
         }
     }
 
@@ -115,14 +159,17 @@ class ItemActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
     override fun onBackPressed() {
+        super.onBackPressed()
+        /*
         if (chapterItem!!.partIdx > 0) {
             val intent = Intent(this, ChapterListActivity::class.java)
             intent.putExtra("part", chapterItem!!.partIdx)
             startActivity(intent)
         } else {
             super.onBackPressed()
-        }
+        }*/
     }
 
     companion object {

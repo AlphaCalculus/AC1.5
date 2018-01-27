@@ -27,7 +27,7 @@ class UserDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
 
     companion object {
         // If you change the database schema, you must increment the database version.
-        val DATABASE_VERSION = 4
+        val DATABASE_VERSION = 8
         val DATABASE_NAME = "userlog.db"
 
 

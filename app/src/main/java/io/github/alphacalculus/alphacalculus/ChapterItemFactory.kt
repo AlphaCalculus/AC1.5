@@ -3,15 +3,12 @@ package io.github.alphacalculus.alphacalculus
 
 import android.content.Context
 import android.net.Uri
-
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import org.xml.sax.InputSource
-
 import javax.xml.xpath.XPathConstants
 import javax.xml.xpath.XPathExpressionException
 import javax.xml.xpath.XPathFactory
-import kotlin.collections.ArrayList
 
 object ChapterItemFactory {
 
@@ -19,6 +16,7 @@ object ChapterItemFactory {
     private var part_number: Int = 0
     private var chapter_number: IntArray? = null
     private val ci = arrayOfNulls<ArrayList<ChapterItem>>(3)
+    private var data: Node? = null;
 
     init {
         val context = TheApp.instance!!.applicationContext
@@ -29,13 +27,12 @@ object ChapterItemFactory {
         val __inputSrc = InputSource(context.resources.openRawResource(R.raw.itemdata))
         val xpath = XPathFactory.newInstance().newXPath()
         try {
-            val data = xpath.evaluate("//Data", __inputSrc, XPathConstants.NODE) as Node
+            data = xpath.evaluate("//Data", __inputSrc, XPathConstants.NODE) as Node
             parts = xpath.evaluate("//Data/Part", data, XPathConstants.NODESET) as NodeList
             part_number = parts!!.length
             if (chapter_number == null) {
                 chapter_number = IntArray(part_number)
             }
-            allquiz = xpath.evaluate("//Data/AllQuiz/Quiz", data, XPathConstants.NODESET) as NodeList
         } catch (e: XPathExpressionException) {
             e.printStackTrace()
         }
@@ -97,7 +94,7 @@ object ChapterItemFactory {
             var lockedBy = -1
             try {
                 lockedBy = Integer.parseInt(xpath.evaluate("./@lockedby", node, XPathConstants.STRING) as String)
-            } catch (throwable: Throwable) {
+            } catch (e: Exception) {
             }
 
             ch = ChapterItem(xpath.evaluate("./@title", node, XPathConstants.STRING) as String,
@@ -159,20 +156,29 @@ object ChapterItemFactory {
 
     fun quizNumber() = allquiz!!.length
 
+    fun getQuestionCount(quiz_idx: Int):Int {
+        val xpath = XPathFactory.newInstance().newXPath()
+        val quiz =xpath.evaluate("//Data/Quiz", data, XPathConstants.NODESET) as NodeList
+        return (xpath.evaluate("count(./Question)", quiz.item(quiz_idx), XPathConstants.NUMBER) as Double).toInt()
+    }
+
     fun getQuiz(quiz_idx: Int): ArrayList<QuestionItem> {
         val xpath = XPathFactory.newInstance().newXPath()
-        val questionNumber = (xpath.evaluate("count(.//Question)",
-                allquiz!!.item(quiz_idx),
-                XPathConstants.NUMBER) as Double).toInt()
+        val quiz =xpath.evaluate("//Data/Quiz", data, XPathConstants.NODESET) as NodeList
+        val questions =xpath.evaluate("./Question", quiz.item(quiz_idx), XPathConstants.NODESET) as NodeList
+
         val result = arrayListOf<QuestionItem>()
-        for (i in 0 until questionNumber) {
-            val question = xpath.evaluate("(.//Question)[${i}+1]",
-                    allquiz!!.item(quiz_idx),
-                    XPathConstants.NODE) as Node
-            val questionText = xpath.evaluate("./text()", question, XPathConstants.STRING) as String
+        for (i in 0 until questions.length) {
+            val question = questions.item(i)
+            val questionText = xpath.evaluate("./Content", question, XPathConstants.STRING) as String
             val answers = xpath.evaluate("./Answer", question, XPathConstants.NODESET) as NodeList
-            val answerTexts = (1..answers.length).map { i -> xpath.evaluate("./text()", answers.item(i), XPathConstants.STRING) as String }
-            val correctAnswerIdx = (xpath.evaluate("./Answer[@is_true='true']/position()", question, XPathConstants.NUMBER) as Double).toInt() -1
+            var correctAnswerIdx = -1;
+            val answerTexts = (0 until answers.length).map { j ->
+                if (answers.item(j).attributes.getNamedItem("is_true")!=null) {
+                    correctAnswerIdx=j
+                }
+                answers.item(j).textContent
+            }
             result.add(QuestionItem(questionText, correctAnswerIdx, answerTexts))
         }
         return result

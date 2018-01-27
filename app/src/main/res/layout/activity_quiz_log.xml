@@ -3,11 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.alphacalculus.alphacalculus.QuizActivity">
+    tools:context=".QuizLogActivity">
 
-    <WebView
-        android:id="@+id/webView"
+    <ListView
+        android:id="@+id/quiz_log_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible" />
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

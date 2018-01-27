@@ -1,6 +1,5 @@
 package io.github.alphacalculus.alphacalculus
 
-import android.content.Context
 import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
@@ -31,7 +30,7 @@ class ChapterItem(val name: String, val content: String, val video: Uri, val par
         }
 
     val isReadable: Boolean
-        get() = if (lockedBy>-1) QuizLogDAO.finished(lockedBy) else true
+        get() = lockedBy<=-1 || QuizLogDAO.finished(lockedBy)
 
 
     // Parcelling part

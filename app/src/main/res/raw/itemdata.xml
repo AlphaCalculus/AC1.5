@@ -734,64 +734,62 @@
         </Chapter>
         </Section>
     </Part>
-    <AllQuiz>
-        <Quiz>
+        <Quiz index="0">
             <Question>
-                导数有什么用？
+                <Content>导数有什么用？</Content>
                 <Answer>求积分</Answer>
                 <Answer is_true="true">分析变化</Answer>
                 <Answer>推导</Answer>
                 <Answer>求极值</Answer>
             </Question>
             <Question>
-                如果轨道瞬间消失了，那么疾驰在上面的过山车会怎样？
+                <Content>如果轨道瞬间消失了，那么疾驰在上面的过山车会怎样？</Content>
                 <Answer>下落</Answer>
                 <Answer is_true="true">曲线飞出</Answer>
                 <Answer>直线飞出</Answer>
                 <Answer>向上飞出</Answer>
             </Question>
             <Question>
-                斜率表示什么？
+                <Content>斜率表示什么？</Content>
                 <Answer is_true="true">倾斜程度</Answer>
                 <Answer>倾斜角度</Answer>
                 <Answer>斜坡</Answer>
                 <Answer>倾斜速率</Answer>
             </Question>
             <Question>
-                ________表示在某一点的“变化趋势（大小）”
+                <Content>________表示在某一点的“变化趋势（大小）”</Content>
                 <Answer>斜率</Answer>
                 <Answer is_true="true">导数</Answer>
                 <Answer>绝对值</Answer>
                 <Answer>积分</Answer>
             </Question>
             <Question>
-                用电脑对图像中的各点亮度________，就能判断出变化剧烈之处的轮廓。
+                <Content>用电脑对图像中的各点亮度________，就能判断出变化剧烈之处的轮廓。</Content>
                 <Answer>求积分</Answer>
                 <Answer is_true="true">求导</Answer>
                 <Answer>算斜率</Answer>
                 <Answer>求函数值</Answer>
             </Question>
             <Question>
-                求某一点的斜率和求导离不开____
+                <Content>求某一点的斜率和求导离不开____</Content>
                 <Answer>积分</Answer>
                 <Answer>导数</Answer>
                 <Answer>极值</Answer>
                 <Answer is_true="true">极限</Answer>
             </Question>
             <Question>
-                什么是极限？
+                <Content>什么是极限？</Content>
                 <Answer>求积分</Answer>
                 <Answer is_true="true">无限接近</Answer>
                 <Answer>求导</Answer>
                 <Answer>求极值</Answer>
             </Question>
             <Question>
-                什么是无限接近
+                <Content>什么是无限接近</Content>
                 <Answer is_true="true">\(\lim_{x \to a} f(x)=b\)</Answer>
                 <Answer>\(e^x = 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!}+…,-\infty \lt x \lt \infty\)</Answer>
                 <Answer>\(a^2+b^2=c^2\)</Answer>
                 <Answer>\((1+x)^n = 1+\frac{nx}{1!}+\frac{n(n-1)x^2}{2!}+…\)</Answer>
             </Question>
         </Quiz>
-    </AllQuiz>
 </Data>
