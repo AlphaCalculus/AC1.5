@@ -34,8 +34,8 @@ class LearningLogAdapter(context: Context, private val resourceId: Int, objects:
     fun formatTime(sec:Int) = getHour(sec)+getMinute(sec)+getSecond(sec)
 
     fun getHour(sec: Int) = if (sec>=3600) "${(sec/3600)} 小时" else ""
-    fun getMinute(sec: Int) = if (sec>=60) "${(sec%60)} 分钟" else ""
-    fun getSecond(sec: Int) = if (sec>=1) "${(sec%3600)} 秒" else ""
+    fun getMinute(sec: Int) = if (sec>=60) "${(sec/60%60)} 分钟" else ""
+    fun getSecond(sec: Int) = if (sec>=1) "${(sec%60%60)} 秒" else ""
 
     internal inner class ViewHolder {
 

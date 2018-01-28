@@ -61,7 +61,6 @@ class ItemActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        startupDate = Date(System.currentTimeMillis())
         deal_with_btn_learn()
     }
 
@@ -161,15 +160,13 @@ class ItemActivity : AppCompatActivity() {
 
 
     override fun onBackPressed() {
+        if (TheApp.instance!!.isAuthed) {
+
+            val learningLogDAO = LearningLogDAO(applicationContext)
+            val currentDate = Date(System.currentTimeMillis())
+            learningLogDAO.setLogPoint(chapterItem!!, (currentDate.time - startupDate.time).toInt())
+        }
         super.onBackPressed()
-        /*
-        if (chapterItem!!.partIdx > 0) {
-            val intent = Intent(this, ChapterListActivity::class.java)
-            intent.putExtra("part", chapterItem!!.partIdx)
-            startActivity(intent)
-        } else {
-            super.onBackPressed()
-        }*/
     }
 
     companion object {
